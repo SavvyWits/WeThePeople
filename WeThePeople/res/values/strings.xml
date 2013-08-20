@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="action_settings"></string>
     <string name="app_name">We The People</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="instruction">Enter a zip code</string>
+    <string name="launch_description">The background image is the U. S. Constitution.</string>
+    <string name="menu_about">About We The People</string>
+    <string name="menu_eula">We The People Eula</string>
+    <string name="no_results">What went wrong? The zip code you enered was not found.</string>
+    <string name="no_results_title">Whoops! This is embarrassing.</string>
+    <string name="submit_button">Submit</string>
 
 </resources>
