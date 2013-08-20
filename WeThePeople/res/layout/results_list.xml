@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#00000000" >
+    android:orientation="vertical" >
     <ListView
         android:id="@id/android:list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ff000000"
-        android:cacheColorHint="#ff000000"
-        android:scrollbarThumbVertical="@drawable/rectangle"
-        android:fitsSystemWindows="true"
-        android:scrollbarTrackVertical="@drawable/rectangle" >
+        android:background="@drawable/overlay_background"
+        android:cacheColorHint="@color/cache_color_hint"
+        android:scrollbarThumbVertical="@drawable/scroll_thumb" />
     
     <ProgressBar
         android:id="@+id/android:empty"
@@ -20,7 +17,5 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:indeterminate="true" />
-        
-    </ListView>    
 
-</LinearLayout>
+</RelativeLayout>

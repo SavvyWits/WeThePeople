@@ -7,18 +7,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
+import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 
-public class RESTResultFragment extends DialogFragment {
+public class RESTResultFragment extends ListFragment {
 	
 	private static final String TAG = "RESTResultFragment";
 	
@@ -28,8 +26,8 @@ public class RESTResultFragment extends DialogFragment {
 	private static final String STATE = "state";
 	private static final String DISTRICT = "district";
 	private static final String OFFICE_ADDRESS = "office";
-	private static final String LINK = "link";
 	private static final String PHONE = "phone";
+	private static final String LINK = "link";
 	
 	ArrayList<HashMap<String, String>> mReplist =
 			new ArrayList<HashMap<String, String>>();
@@ -40,8 +38,10 @@ public class RESTResultFragment extends DialogFragment {
 	}
 	
 	@Override
-	public Dialog onCreateDialog(Bundle savedInstanceState) {
-		super.onCreateDialog(savedInstanceState);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+		super.onCreateView(inflater, container, savedInstanceState);
+		
+		View view = inflater.inflate(R.layout.results_list, container, false);
 		
 		String data = getArguments().getString("json_result");
         
@@ -78,14 +78,11 @@ public class RESTResultFragment extends DialogFragment {
         		new int[] { R.id.name, R.id.party, R.id.state,
         			R.id.district, R.id.address, R.id.phone, R.id.link });
         
-        return new AlertDialog.Builder(getActivity())
-        	.setAdapter(adapter, null)
-        	.create();
+        setListAdapter(adapter);
+        return view;
 		
 	}
 	
-	public RESTResultFragment() {
-		// The fragment's empty constructor
-	}
+	public RESTResultFragment() {}
 
 }
