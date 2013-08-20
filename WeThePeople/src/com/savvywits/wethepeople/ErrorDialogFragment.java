@@ -9,7 +9,7 @@ import android.support.v4.app.Fragment;
 
 public class ErrorDialogFragment extends DialogFragment {
 	
-	public static Fragment newInstance(String zipCode) {
+	public static DialogFragment newInstance(String zipCode) {
 		ErrorDialogFragment fragment = new ErrorDialogFragment();
 		Bundle bundle = new Bundle();
 		bundle.putString("zip_code", zipCode);

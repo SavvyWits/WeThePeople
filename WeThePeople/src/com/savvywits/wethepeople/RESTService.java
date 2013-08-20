@@ -38,8 +38,13 @@ public class RESTService extends IntentService {
 		try {
         	String json = EntityUtils.toString(new DefaultHttpClient()
     		.execute(new HttpGet(url)).getEntity());
-			bundle.putString("rest_result", json);
-			receiver.send(STATUS_FINISHED, bundle);
+        	
+        	if (!validateJSON(json)) {
+        		receiver.send(STATUS_ERROR, Bundle.EMPTY);
+        	} else {
+        		bundle.putString("rest_result", json);
+        		receiver.send(STATUS_FINISHED, bundle);
+        	}
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (ClientProtocolException e) {
@@ -50,5 +55,11 @@ public class RESTService extends IntentService {
 			bundle.putString(Intent.EXTRA_TEXT, e.toString());
 			receiver.send(STATUS_ERROR, bundle);
 		}
+	}
+	
+	public static boolean validateJSON(String string) {
+		return string != null && ("null".equals(string)
+				|| (string.startsWith("[") && string.endsWith("]"))
+				|| (string.startsWith("{") && string.endsWith("}")));
 	}
 }

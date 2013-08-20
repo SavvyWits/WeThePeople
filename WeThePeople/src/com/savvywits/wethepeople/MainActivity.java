@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -27,6 +28,7 @@ public class MainActivity extends FragmentActivity
 	
 	private EditText mData;
 	private FragmentManager mFragmentManager = getSupportFragmentManager();
+	private String mZipCode;
 	
 	public RESTReceiver mReceiver;
 	
@@ -59,21 +61,6 @@ public class MainActivity extends FragmentActivity
 			}
 				
 			if (resultData != null) {
-				/*if (validateJson(resultData.getString("json_result")) == false) {
-					AlertDialog.Builder alertDialogBuilder =
-							new AlertDialog.Builder(new ContextThemeWrapper
-									(this, R.style.CustomProgressDialog));			 
-						// set title
-						alertDialogBuilder.setTitle(R.string.no_results_title);			 
-						// set dialog message
-						alertDialogBuilder
-							.setMessage(R.string.no_results)
-							.setCancelable(true);			 
-							// create alert dialog
-							AlertDialog alertDialog = alertDialogBuilder.create();			 
-							// show it
-							alertDialog.show();
-				} else {*/
 					RESTResultFragment result = (RESTResultFragment)
 						mFragmentManager.findFragmentByTag("results");
 					if(result == null) {
@@ -83,27 +70,41 @@ public class MainActivity extends FragmentActivity
 						RESTResultFragment resultList = new RESTResultFragment();
 						resultList.setArguments(bundle);
 						resultList.show(mFragmentManager, "results");
-						//}
 				}
 			}
 			break;
 		case ERROR:
+			Fragment errorFragment = mFragmentManager.findFragmentByTag("error_dialog");
+			if (errorFragment == null) {
+				DialogFragment error = ErrorDialogFragment.newInstance(mZipCode);
+				error.show(mFragmentManager, "error_dialog");
+			}
 			break;
 		}
 	}
 	
-	public void onClick(View view) {		
-		Intent intent = new Intent(Intent.ACTION_SYNC, null, this, RESTService.class);
-		String data = mData.getText().toString();
-		intent.putExtra("receiver", mReceiver);
-		intent.putExtra("data", data);
-		startService(intent);
+	public void onClick(View view) {
+
+		mZipCode = mData.getText().toString();
 		
-		Fragment fragment = mFragmentManager.findFragmentById(R.id.loading);
-		
-		if (fragment == null) {
-			FragmentTransaction ft = mFragmentManager.beginTransaction();
-			ft.commit();
+		if (validZipCode(mZipCode)) {
+			Intent intent = new Intent(Intent.ACTION_SYNC, null, this, RESTService.class);
+			intent.putExtra("receiver", mReceiver);
+			intent.putExtra("data", mZipCode);
+			startService(intent);
+			
+			Fragment fragment = mFragmentManager.findFragmentByTag("in_progress");
+			
+			if (fragment == null) {
+				FragmentTransaction ft = mFragmentManager.beginTransaction();
+				ft.commit();
+				}
+		}else {
+			Fragment errorFragment = mFragmentManager.findFragmentByTag("zip_error");
+			if (errorFragment == null) {
+				DialogFragment error = ErrorDialogFragment.newInstance(null);
+				error.show(mFragmentManager, "zip_error");
+			}
 		}
 		
 	}
@@ -132,6 +133,19 @@ public class MainActivity extends FragmentActivity
 	    }
 	}
 	
+	public boolean validZipCode(String zipCode) {
+		boolean valid = false;
+		if (zipCode.length() == 5) {
+			char[] chars = zipCode.toCharArray();
+			for (int i=0; i<5; i++) {
+				if (Character.isDigit(chars[i])) {
+					valid = true;
+				}
+			}
+		}
+		return valid;
+	}
+	
 	@Override
 	public void onPause() {
 		super.onPause();
@@ -142,12 +156,6 @@ public class MainActivity extends FragmentActivity
 	public void onResume() {
 		super.onResume();
 		mReceiver.setReceiver(this);
-	}
-	
-	public static boolean validateJson(String string) {
-		return string != null && ("null".equals(string)
-				|| (string.startsWith("[") && string.endsWith("]"))
-				|| (string.startsWith("{") && string.endsWith("}")));
 	}
 
 }
