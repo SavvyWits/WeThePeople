@@ -3,12 +3,18 @@
 
     <string name="action_settings"></string>
     <string name="app_name">We The People</string>
+    <string name="dialog_ok">OK</string>
     <string name="instruction">Enter a zip code</string>
+    <string name="invalid_entry">Uh oh! Something\'s wromg.</string>
+    <string name="invalid_message">The zip code entered does not fit the 
+        required format. It must be five (5) digits only. For example, 
+        zip + 4 is not allowed.</string>
     <string name="launch_description">The background image is the U. S. Constitution.</string>
     <string name="menu_about">About We The People</string>
     <string name="menu_eula">We The People Eula</string>
-    <string name="no_results">What went wrong? The zip code you enered was not found.</string>
-    <string name="no_results_title">Whoops! This is embarrassing.</string>
+    <string name="no_results_before_zip">This is embarrassing. The zip code "</string>
+    <string name="no_results_after_zip">" is not in the database.</string>
+    <string name="no_results_title">Whoops! What went wrong?</string>
     <string name="submit_button">Submit</string>
 
 </resources>
