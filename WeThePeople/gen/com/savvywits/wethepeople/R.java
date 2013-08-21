@@ -23,16 +23,15 @@ public final class R {
         public static final int submit_text=0x7f040007;
     }
     public static final class dimen {
-        /**  Default screen margins, per the Android Design guidelines. 
-
+        /** 
          Customize dimensions originally defined in res/values/dimens.xml (such as
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
-        public static final int results_details=0x7f050003;
-        public static final int results_name=0x7f050002;
+        public static final int activity_horizontal_margin=0x7f050003;
+        public static final int overlay_margin=0x7f050000;
+        public static final int results_details=0x7f050002;
+        public static final int results_name=0x7f050001;
     }
     public static final class drawable {
         public static final int button=0x7f020000;
@@ -51,9 +50,9 @@ public final class R {
         public static final int eula=0x7f09000f;
         public static final int instruction=0x7f090002;
         public static final int link=0x7f09000c;
-        public static final int loading=0x7f090005;
         public static final int mainview=0x7f090001;
         public static final int name=0x7f090006;
+        public static final int overlay=0x7f090005;
         public static final int party=0x7f090007;
         public static final int phone=0x7f09000b;
         public static final int state=0x7f090008;

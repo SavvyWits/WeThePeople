@@ -49,7 +49,7 @@ public class RESTResultFragment extends ListFragment {
 	public static RESTResultFragment newInstance(String string) {
 		RESTResultFragment fragment = new RESTResultFragment();
 		Bundle bundle = new Bundle();
-		bundle.putString("json_string", string);
+		bundle.putString("result_string", string);
 		fragment.setArguments(bundle);
 		return fragment;
 	}
@@ -63,9 +63,8 @@ public class RESTResultFragment extends ListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		
-		View view = inflater.inflate(R.layout.results_list, container, false);
-		
-		String data = getArguments().getString("json_string");
+		View view = inflater.inflate(R.layout.results_list, container, false);		
+		String data = getArguments().getString("result_string");
         
         try {
     		JSONObject jobj = new JSONObject(data);
@@ -75,7 +74,7 @@ public class RESTResultFragment extends ListFragment {
         	int length = jarray.length();
         	
         	for (int i = 0; i < length; i++) {
-        		
+        		// Use a hash map because Java does not do associative array
         		HashMap<String, String> map = new HashMap<String, String>();
         		
     			JSONObject r = jarray.getJSONObject(i);

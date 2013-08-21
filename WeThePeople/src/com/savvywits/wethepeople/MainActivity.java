@@ -32,6 +32,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/*
+ * This application uses just one activity, similar to an MVC web site.
+ */
+
 public class MainActivity extends FragmentActivity
 	implements RESTReceiver.Receiver, OnClickListener {
 	
@@ -41,6 +45,7 @@ public class MainActivity extends FragmentActivity
 	private static final int ERROR = 3;
 	
 	private EditText mData;
+	// One FragmentManager is plenty
 	private FragmentManager mFragmentManager = getSupportFragmentManager();
 	private String mZipCode;
 	
@@ -55,6 +60,7 @@ public class MainActivity extends FragmentActivity
 		mReceiver.setReceiver(this);
 		
 		mData = (EditText) findViewById(R.id.zipcode);
+		// This makes a nice ten-key pad
 		mData.setInputType(InputType.TYPE_CLASS_TEXT
 				| InputType.TYPE_CLASS_NUMBER);
 		
@@ -66,25 +72,21 @@ public class MainActivity extends FragmentActivity
 	public void onReceiveResult(int resultCode, Bundle resultData) {
 		switch(resultCode) {
 		case RUNNING:
+			/*
+			 * This might be a good place to check for server not responding errors
+			 */
 			break;
 		case FINISHED:
-			Fragment fragment = mFragmentManager.findFragmentById(R.id.loading);			
-			if (fragment != null) {
-				FragmentTransaction ft = mFragmentManager.beginTransaction();
-				ft.commit();
-			}
-				
-			if (resultData != null) {
-					RESTResultFragment result = (RESTResultFragment)
-						mFragmentManager.findFragmentByTag("finished");
-					if(result == null) {
-						FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-						String data = resultData.getString("json_result");
-						RESTResultFragment resultList = RESTResultFragment.newInstance(data);
-						fragmentTransaction.add(resultList, "finished");
-						fragmentTransaction.commit();
+			Fragment inProgress = mFragmentManager.findFragmentByTag("in_progress");
+			Fragment result = mFragmentManager.findFragmentByTag("finished");
+			if(result == null) {
+				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+				String data = resultData.getString("json_result");
+				RESTResultFragment resultList = RESTResultFragment.newInstance(data);
+				fragmentTransaction.remove(inProgress);
+				fragmentTransaction.add(resultList, "finished");
+				fragmentTransaction.commit();
 				}
-			}
 			break;
 		case ERROR:
 			Fragment errorFragment = mFragmentManager.findFragmentByTag("error_dialog");
@@ -95,30 +97,38 @@ public class MainActivity extends FragmentActivity
 			break;
 		}
 	}
-	
+	/*
+	 * (non-Javadoc)
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 * 
+	 * Add an empty RESTResultFragment here, taking advantage of id/android:empty
+	 * in the ListView to show progress wheel. An alternative approach is a fragment
+	 * dedicated to showing a progress wheel. The approach used here is chosen because
+	 * it takes fewer classes.
+	 */
 	public void onClick(View view) {
-
-		mZipCode = mData.getText().toString();
-		
+		mZipCode = mData.getText().toString();		
 		if (validZipCode(mZipCode)) {
+			Fragment fragment = mFragmentManager.findFragmentByTag("in_progress");			
+			if (fragment == null) {
+				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+				RESTResultFragment emptyList = RESTResultFragment.newInstance(null);
+				fragmentTransaction.add(emptyList, "in_progress");
+				fragmentTransaction.commit();
+				}
+			
 			Intent intent = new Intent(Intent.ACTION_SYNC, null, this, RESTService.class);
 			intent.putExtra("receiver", mReceiver);
 			intent.putExtra("data", mZipCode);
 			startService(intent);
 			
-			Fragment fragment = mFragmentManager.findFragmentByTag("in_progress");
-			
-			if (fragment == null) {
-				FragmentTransaction ft = mFragmentManager.beginTransaction();
-				ft.commit();
-				}
-		}else {
+		} else {
 			Fragment errorFragment = mFragmentManager.findFragmentByTag("zip_error");
 			if (errorFragment == null) {
 				DialogFragment error = ErrorDialogFragment.newInstance(null);
 				error.show(mFragmentManager, "zip_error");
+				}
 			}
-		}
 		
 	}
 	
@@ -131,9 +141,15 @@ public class MainActivity extends FragmentActivity
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle item selection
 	    switch (item.getItemId()) {
 	        case R.id.about:
+	        	Fragment aboutFragment = mFragmentManager.findFragmentByTag("about");
+	        	if (aboutFragment == null) {
+	        		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+	        		AboutFragment about = AboutFragment.newInstance();
+	        		fragmentTransaction.add(about, "about");
+	        		fragmentTransaction.commit();
+	        	}
 	            return true;
 	        case R.id.eula:
 	    		Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -144,6 +160,22 @@ public class MainActivity extends FragmentActivity
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
+	}
+	
+	@Override
+	public void onBackPressed() {
+		/*
+		 * Checking for a view id instead of a fragment tag allows for the
+		 * possibility of either an AboutFragment or RESTResultFragment.
+		 */
+		Fragment overlay = mFragmentManager.findFragmentById(R.id.overlay);
+		if (overlay != null) {
+			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+			fragmentTransaction.remove(overlay);
+			fragmentTransaction.commit();
+		} else {
+			super.onBackPressed();
+		}
 	}
 	
 	public boolean validZipCode(String zipCode) {
@@ -162,6 +194,7 @@ public class MainActivity extends FragmentActivity
 	@Override
 	public void onPause() {
 		super.onPause();
+		// The ResultReceiver's Handler needs to be released
 		mReceiver.setReceiver(null);
 	}
 	

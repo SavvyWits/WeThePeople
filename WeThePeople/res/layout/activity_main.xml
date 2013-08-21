@@ -46,8 +46,9 @@
         android:text="@string/submit_button"
         style="@style/Button.Big" />
 
+    <!-- One FrameLayout can handle many fragments. -->
     <FrameLayout
-        android:id="@+id/loading"
+        android:id="@+id/overlay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

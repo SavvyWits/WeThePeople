@@ -17,12 +17,17 @@ package com.savvywits.wethepeople;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class AboutFragment extends Fragment {
+	
+	public static AboutFragment newInstance() {
+		return new AboutFragment();
+	}
 	
     @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,6 +38,8 @@ public class AboutFragment extends Fragment {
         String text = new String();
         TextView tv = (TextView)getActivity().findViewById(R.id.aboutpage);
         tv.setText(Html.fromHtml(text));
+
+        Linkify.addLinks(tv, Linkify.ALL);
         
         return tv;
     }
@@ -60,4 +67,6 @@ public class AboutFragment extends Fragment {
     public void onStop() {
     	super.onStop();
     	}
+    
+    public AboutFragment(){}
 }

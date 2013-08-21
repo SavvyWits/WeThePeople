@@ -4,9 +4,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#00000000" >
+    
+    <ScrollView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_margin="@dimen/overlay_margin"
+         android:background="@drawable/overlay_background"
+         android:scrollbarThumbVertical="@drawable/scroll_thumb" >
     <TextView
         android:id="@+id/aboutpage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:autoLink="all" />
+    </ScrollView>
 
 </LinearLayout>
