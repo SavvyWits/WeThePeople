@@ -28,6 +28,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 public class RESTResultFragment extends ListFragment {
@@ -61,11 +62,11 @@ public class RESTResultFragment extends ListFragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-		super.onCreateView(inflater, container, savedInstanceState);
 		
-		View view = inflater.inflate(R.layout.results_list, container, false);		
 		String data = getArguments().getString("result_string");
-        
+        if (data != null) {
+    		Log.v(TAG, data);    		
+    		View view = inflater.inflate(R.layout.results_list, container, false);
         try {
     		JSONObject jobj = new JSONObject(data);
     		JSONArray jarray = new JSONArray();
@@ -91,7 +92,7 @@ public class RESTResultFragment extends ListFragment {
     			mReplist.add(map);        		
         	}
     	} catch (JSONException e){
-    		Log.e("RESTResult", "Error parsing data [" + e.getMessage()+"] " + data);
+    		Log.e(TAG, "Error parsing data [" + e.getMessage()+"] " + data);
     	}
     	
         ListAdapter adapter = new SimpleAdapter(getActivity(), mReplist, R.layout.results_item,
@@ -101,6 +102,9 @@ public class RESTResultFragment extends ListFragment {
         
         setListAdapter(adapter);
         return view;
+        } else {
+        	return super.onCreateView(inflater, container, savedInstanceState);
+        }
 		
 	}
 	

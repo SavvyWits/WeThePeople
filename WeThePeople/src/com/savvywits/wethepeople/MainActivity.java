@@ -81,7 +81,7 @@ public class MainActivity extends FragmentActivity
 			Fragment result = mFragmentManager.findFragmentByTag("finished");
 			if(result == null) {
 				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-				String data = resultData.getString("json_result");
+				String data = resultData.getString("rest_result");
 				RESTResultFragment resultList = RESTResultFragment.newInstance(data);
 				fragmentTransaction.remove(inProgress);
 				fragmentTransaction.add(resultList, "finished");
@@ -119,7 +119,7 @@ public class MainActivity extends FragmentActivity
 			
 			Intent intent = new Intent(Intent.ACTION_SYNC, null, this, RESTService.class);
 			intent.putExtra("receiver", mReceiver);
-			intent.putExtra("data", mZipCode);
+			intent.putExtra("zipcode", mZipCode);
 			startService(intent);
 			
 		} else {

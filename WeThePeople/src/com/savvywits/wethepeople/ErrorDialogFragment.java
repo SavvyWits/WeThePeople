@@ -39,7 +39,9 @@ public class ErrorDialogFragment extends DialogFragment {
         
         if (zipCode != null) {
         	builder.setTitle(R.string.no_results_title)
-        		   .setMessage(R.string.no_results_before_zip + zipCode + R.string.no_results_after_zip)
+        		   .setMessage(getString(R.string.no_results_before_zip)
+        				   + zipCode
+        				   + getString(R.string.no_results_after_zip))
         		   .setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int id) {
                        dismiss();
