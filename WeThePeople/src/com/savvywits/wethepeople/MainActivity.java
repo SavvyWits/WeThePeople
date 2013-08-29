@@ -73,20 +73,12 @@ public class MainActivity extends FragmentActivity
 		switch(resultCode) {
 		case RUNNING:
 			/*
-			 * This might be a good place to check for server not responding errors
+			 * TODO: Check for server not responding errors
 			 */
 			break;
 		case FINISHED:
-			Fragment inProgress = mFragmentManager.findFragmentByTag("in_progress");
-			Fragment result = mFragmentManager.findFragmentByTag("finished");
-			if(result == null) {
-				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-				String data = resultData.getString("rest_result");
-				RESTResultFragment resultList = RESTResultFragment.newInstance(data);
-				fragmentTransaction.remove(inProgress);
-				fragmentTransaction.add(resultList, "finished");
-				fragmentTransaction.commit();
-				}
+			String data = resultData.getString("rest_result");
+			RESTResultFragment.newInstance(data);
 			break;
 		case ERROR:
 			Fragment errorFragment = mFragmentManager.findFragmentByTag("error_dialog");
@@ -109,11 +101,11 @@ public class MainActivity extends FragmentActivity
 	public void onClick(View view) {
 		mZipCode = mData.getText().toString();		
 		if (validZipCode(mZipCode)) {
-			Fragment fragment = mFragmentManager.findFragmentByTag("in_progress");			
+			Fragment fragment = mFragmentManager.findFragmentById(R.id.overlay);			
 			if (fragment == null) {
 				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 				RESTResultFragment emptyList = RESTResultFragment.newInstance(null);
-				fragmentTransaction.add(emptyList, "in_progress");
+				fragmentTransaction.add(emptyList, "results_list");
 				fragmentTransaction.commit();
 				}
 			

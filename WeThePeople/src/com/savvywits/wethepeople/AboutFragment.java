@@ -33,15 +33,12 @@ public class AboutFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        inflater.inflate(R.layout.about_layout, container, false);
-        
-        String text = new String();
-        TextView tv = (TextView)getActivity().findViewById(R.id.aboutpage);
-        tv.setText(Html.fromHtml(text));
+        TextView text = (TextView) inflater.inflate(R.layout.about_layout, container, false);
+        text.setText(Html.fromHtml(AboutText.ABOUT));
 
-        Linkify.addLinks(tv, Linkify.ALL);
+        Linkify.addLinks(text, Linkify.ALL);
         
-        return tv;
+        return text;
     }
     @Override
     public void onResume() {

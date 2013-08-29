@@ -28,7 +28,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 public class RESTResultFragment extends ListFragment {
@@ -43,6 +42,8 @@ public class RESTResultFragment extends ListFragment {
 	private static final String OFFICE_ADDRESS = "office";
 	private static final String PHONE = "phone";
 	private static final String LINK = "link";
+	
+	private ListAdapter mAdapter;
 	
 	ArrayList<HashMap<String, String>> mReplist =
 			new ArrayList<HashMap<String, String>>();
@@ -61,51 +62,46 @@ public class RESTResultFragment extends ListFragment {
 	}
 	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {    		
 		
-		String data = getArguments().getString("result_string");
-        if (data != null) {
-    		Log.v(TAG, data);    		
-    		View view = inflater.inflate(R.layout.results_list, container, false);
-        try {
-    		JSONObject jobj = new JSONObject(data);
-    		JSONArray jarray = new JSONArray();
-    		jarray = jobj.getJSONArray(RESULTS);
-    		
-        	int length = jarray.length();
-        	
-        	for (int i = 0; i < length; i++) {
-        		// Use a hash map because Java does not do associative array
-        		HashMap<String, String> map = new HashMap<String, String>();
-        		
-    			JSONObject r = jarray.getJSONObject(i);
-    			
-    			map.put("id", String.valueOf(i));
-    			map.put("name", r.getString(NAME));
-    			map.put("party", r.getString(PARTY));
-    			map.put("state", r.getString(STATE));
-    			map.put("district", r.getString(DISTRICT));
-    			map.put("address", r.getString(OFFICE_ADDRESS));    			
-    			map.put("phone", r.getString(PHONE));
-    			map.put("link", r.getString(LINK));
-    			
-    			mReplist.add(map);        		
-        	}
-    	} catch (JSONException e){
-    		Log.e(TAG, "Error parsing data [" + e.getMessage()+"] " + data);
-    	}
-    	
-        ListAdapter adapter = new SimpleAdapter(getActivity(), mReplist, R.layout.results_item,
-        		new String[] { "name", "party", "state", "district", "address", "phone", "link" },
-        		new int[] { R.id.name, R.id.party, R.id.state,
-        			R.id.district, R.id.address, R.id.phone, R.id.link });
+		View view = inflater.inflate(R.layout.results_list, container, false);
+		mAdapter = new SimpleAdapter(getActivity(), mReplist, R.layout.results_item,
+				new String[] { "name", "party", "state", "district", "address", "phone", "link" },
+				new int[] { R.id.name, R.id.party, R.id.state,
+					R.id.district, R.id.address, R.id.phone, R.id.link });
         
-        setListAdapter(adapter);
-        return view;
-        } else {
-        	return super.onCreateView(inflater, container, savedInstanceState);
-        }
+		setListAdapter(mAdapter);
+		return view;
+	}
+	
+	public void updateResults(String results) {
+		try {
+			JSONObject jobj = new JSONObject(results);
+			JSONArray jarray = new JSONArray();
+			jarray = jobj.getJSONArray(RESULTS);
+	
+			int length = jarray.length();
+	
+			for (int i = 0; i < length; i++) {
+				// Use a hash map because Java does not do associative array
+				HashMap<String, String> map = new HashMap<String, String>();
 		
+				JSONObject r = jarray.getJSONObject(i);
+		
+				map.put("id", String.valueOf(i));
+				map.put("name", r.getString(NAME));
+				map.put("party", r.getString(PARTY));
+				map.put("state", r.getString(STATE));
+				map.put("district", r.getString(DISTRICT));
+				map.put("address", r.getString(OFFICE_ADDRESS));    			
+				map.put("phone", r.getString(PHONE));
+				map.put("link", r.getString(LINK));
+
+				mReplist.add(map);        		
+			}
+		} catch (JSONException e){
+			Log.e(TAG, "Error parsing data [" + e.getMessage()+"] " + results);
+		}
 	}
 	
 	public RESTResultFragment() {}
