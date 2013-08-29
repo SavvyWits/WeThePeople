@@ -27,6 +27,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 
@@ -43,9 +44,9 @@ public class RESTResultFragment extends ListFragment {
 	private static final String PHONE = "phone";
 	private static final String LINK = "link";
 	
-	private ListAdapter mAdapter;
+	private static SimpleAdapter mAdapter;
 	
-	ArrayList<HashMap<String, String>> mReplist =
+	static ArrayList<HashMap<String, String>> mReplist =
 			new ArrayList<HashMap<String, String>>();
 	
 	public static RESTResultFragment newInstance(String string) {
@@ -74,7 +75,7 @@ public class RESTResultFragment extends ListFragment {
 		return view;
 	}
 	
-	public void updateResults(String results) {
+	public static void updateResults(String results) {
 		try {
 			JSONObject jobj = new JSONObject(results);
 			JSONArray jarray = new JSONArray();
@@ -102,6 +103,7 @@ public class RESTResultFragment extends ListFragment {
 		} catch (JSONException e){
 			Log.e(TAG, "Error parsing data [" + e.getMessage()+"] " + results);
 		}
+		mAdapter.notifyDataSetChanged();
 	}
 	
 	public RESTResultFragment() {}

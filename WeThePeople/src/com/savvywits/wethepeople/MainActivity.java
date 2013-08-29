@@ -78,7 +78,7 @@ public class MainActivity extends FragmentActivity
 			break;
 		case FINISHED:
 			String data = resultData.getString("rest_result");
-			RESTResultFragment.newInstance(data);
+			RESTResultFragment.updateResults(data);
 			break;
 		case ERROR:
 			Fragment errorFragment = mFragmentManager.findFragmentByTag("error_dialog");
@@ -101,11 +101,11 @@ public class MainActivity extends FragmentActivity
 	public void onClick(View view) {
 		mZipCode = mData.getText().toString();		
 		if (validZipCode(mZipCode)) {
-			Fragment fragment = mFragmentManager.findFragmentById(R.id.overlay);			
+			Fragment fragment = mFragmentManager.findFragmentByTag("results_list");			
 			if (fragment == null) {
 				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 				RESTResultFragment emptyList = RESTResultFragment.newInstance(null);
-				fragmentTransaction.add(emptyList, "results_list");
+				fragmentTransaction.add(R.id.overlay, emptyList, "results_list");
 				fragmentTransaction.commit();
 				}
 			
@@ -139,7 +139,8 @@ public class MainActivity extends FragmentActivity
 	        	if (aboutFragment == null) {
 	        		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 	        		AboutFragment about = AboutFragment.newInstance();
-	        		fragmentTransaction.add(about, "about");
+	        		fragmentTransaction.add(R.id.overlay, about, "about");
+                    fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 	        		fragmentTransaction.commit();
 	        	}
 	            return true;
