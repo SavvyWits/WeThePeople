@@ -16,8 +16,8 @@ package com.savvywits.wethepeople;
 
 public final class AboutText {
 	public static final String ABOUT =
-			"<h1>About We The People</h1><br />" +
-	"An Android&trade service developed and published by Rich Dudka<br /><br />" +
+			"<h1>About We The People</h1>" +
+	"An Android&trade service developed and published by Rich Dudka.<br /><br />" +
 	"The inspiration for this project sprang from a job interview. The interviewer " +
 	"asked me to create a working application using this public API: " +
 	"WhoIsMyRepresentative.com. (My thanks to whomever created it). While working on " +

@@ -8,13 +8,14 @@
     <ScrollView
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_margin="@dimen/overlay_margin"
+         android:layout_margin="@dimen/margin"
          android:background="@drawable/overlay_background"
          android:scrollbarThumbVertical="@drawable/scroll_thumb" >
     <TextView
         android:id="@+id/aboutpage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/about_style"
         android:autoLink="all" />
     </ScrollView>
 

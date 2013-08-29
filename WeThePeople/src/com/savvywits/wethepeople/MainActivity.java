@@ -77,6 +77,10 @@ public class MainActivity extends FragmentActivity
 			 */
 			break;
 		case FINISHED:
+			/*
+			 * Get the JSON string and send it to the list adapter. No need
+			 * to kill and rebuild the RESTResultFragment.
+			 */
 			String data = resultData.getString("rest_result");
 			RESTResultFragment.updateResults(data);
 			break;

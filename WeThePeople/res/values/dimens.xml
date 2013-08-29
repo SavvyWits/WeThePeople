@@ -1,7 +1,9 @@
 <resources>
     
-    <dimen name="overlay_margin">16dp</dimen>
+    <dimen name="margin">10dp</dimen>
+    <dimen name="padding">10dp</dimen>
+    <dimen name="about_text">25sp</dimen>
     <dimen name="results_name">32sp</dimen>
-    <dimen name="results_details">28sp</dimen>
+    <dimen name="results_details">25sp</dimen>
 
 </resources>

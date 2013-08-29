@@ -7,7 +7,7 @@
         android:bottomRightRadius="5dp" />
     <gradient
         android:centerX="0.3"
-        android:centerColor="@color/main_color"
+        android:centerColor="@color/end_color"
         android:endColor="@color/end_color"
         android:startColor="@color/main_color"
         android:type="linear" />

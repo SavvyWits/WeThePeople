@@ -7,6 +7,7 @@
         android:id="@id/android:list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
         android:background="@drawable/overlay_background"
         android:cacheColorHint="@color/cache_color_hint"
         android:scrollbarThumbVertical="@drawable/scroll_thumb" />
@@ -16,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        style="@android:style/Widget.ProgressBar.Large.Inverse"
         android:indeterminate="true" />
 
 </RelativeLayout>

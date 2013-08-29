@@ -1,5 +1,11 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     
+    <style name="about_style">
+        <item name="android:padding">@dimen/padding</item>
+        <item name="android:textColor">@color/about_text</item>
+        <item name="android:textColorLink">@color/about_text</item>
+        <item name="android:textSize">@dimen/about_text</item>
+    </style>
     <style name="Button">
         <item name="android:typeface">sans</item>
         <item name="android:padding">12dp</item>
@@ -9,6 +15,28 @@
     <style name="Button.Big">
         <item name="android:textSize">32sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+    <style name="results_name">
+        <item name="android:padding">@dimen/padding</item>
+        <item name="android:textColor">@color/results_name</item>
+        <item name="android:textSize">@dimen/results_name</item>
+    </style>
+    <style name="results_detail">
+        <item name="android:paddingLeft">@dimen/padding</item>
+        <item name="android:textColor">@color/results_details</item>
+        <item name="android:textSize">@dimen/results_details</item>
+    </style>
+    <style name="results_address">
+        <item name="android:paddingLeft">@dimen/padding</item>
+        <item name="android:paddingRight">@dimen/padding</item>
+        <item name="android:textColor">@color/results_details</item>
+        <item name="android:textSize">@dimen/results_details</item>        
+    </style>
+    <style name="results_link">
+        <item name="android:paddingLeft">@dimen/padding</item>
+        <item name="android:paddingRight">@dimen/padding</item>
+        <item name="android:textColorLink">@color/results_details</item>
+        <item name="android:textSize">@dimen/results_details</item>        
     </style>
 
 </resources>

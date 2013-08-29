@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
+    <color name="about_text">#ddffa475</color>
+    <color name="cache_color_hint">#00000000</color>
+    <color name="end_color">#aaffffff</color>
+    <color name="edit_text">#aaffffff</color>
+    <color name="launch_text">#aa483d3d</color>
     <color name="main_color">#aa5a4939</color>
     <color name="overlay_background">#aa704833</color>
+    <color name="results_details">#ddffa475</color>
+    <color name="results_name">#ddffa475</color>
     <color name="stroke_color">#aaffffff</color>
-    <color name="launch_text">#aa483d3d</color>
-    <color name="cache_color_hint">#00000000</color>
-    <color name="edit_text">#aaffffff</color>
-    <color name="end_color">#aaffffff</color>
     <color name="submit_text">#aaffffff</color>
-    <color name="results_name">#aaffa475</color>
-    <color name="results_details">#aaffa475</color>
     
 </resources>

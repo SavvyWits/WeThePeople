@@ -9,28 +9,21 @@
         android:layout_alignParentTop="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:textColor="@color/results_name"
-        android:textSize="@dimen/results_name" />
+        style="@style/results_name" />
  
     <TextView
         android:id="@+id/party"
         android:layout_below="@id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:textColor="@color/results_details"
-        android:textSize="@dimen/results_details" />
- 
+        style="@style/results_detail" /> 
     <TextView
         android:id="@+id/state"
         android:layout_below="@id/name"
         android:layout_toRightOf="@id/party"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:textColor="@color/results_details"
-        android:textSize="@dimen/results_details" />
+        style="@style/results_detail" />
  
     <TextView
         android:id="@+id/district"
@@ -38,27 +31,21 @@
         android:layout_toRightOf="@id/state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:textColor="@color/results_details"
-        android:textSize="@dimen/results_details" />
+        style="@style/results_detail" />
  
     <TextView
         android:id="@+id/address"
         android:layout_below="@id/party"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:textColor="@color/results_details"
-        android:textSize="@dimen/results_details" />
+        style="@style/results_address" />
  
     <TextView
         android:id="@+id/phone"
         android:layout_below="@id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:textColorLink="@color/results_details"
-        android:textSize="@dimen/results_details"
+        style="@style/results_link"
         android:autoLink="phone" />
  
     <TextView
@@ -66,9 +53,7 @@
         android:layout_below="@id/phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:textColorLink="@color/results_details"
-        android:textSize="@dimen/results_details"
+        style="@style/results_link"
         android:autoLink="web" />    
 
 </RelativeLayout>
