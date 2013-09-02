@@ -41,16 +41,18 @@ public final class R {
         public static final int constitution=0x7f020001;
         public static final int ic_launcher=0x7f020002;
         public static final int overlay_background=0x7f020003;
-        public static final int rectangle=0x7f020004;
-        public static final int scroll_thumb=0x7f020005;
+        public static final int overlay_button=0x7f020004;
+        public static final int rectangle=0x7f020005;
+        public static final int scroll_thumb=0x7f020006;
     }
     public static final class id {
-        public static final int about=0x7f09000e;
+        public static final int about=0x7f09000f;
         public static final int aboutpage=0x7f090000;
         public static final int address=0x7f09000a;
         public static final int district=0x7f090009;
-        public static final int element_background_shape=0x7f09000d;
-        public static final int eula=0x7f09000f;
+        public static final int element_background_shape=0x7f09000e;
+        public static final int eula=0x7f090010;
+        public static final int footer_button=0x7f09000d;
         public static final int instruction=0x7f090002;
         public static final int link=0x7f09000c;
         public static final int mainview=0x7f090001;
@@ -75,16 +77,18 @@ public final class R {
         public static final int action_settings=0x7f060000;
         public static final int app_name=0x7f060001;
         public static final int dialog_ok=0x7f060002;
-        public static final int instruction=0x7f060003;
-        public static final int invalid_entry=0x7f060004;
-        public static final int invalid_message=0x7f060005;
-        public static final int launch_description=0x7f060006;
-        public static final int menu_about=0x7f060007;
-        public static final int menu_eula=0x7f060008;
-        public static final int no_results_after_zip=0x7f06000a;
-        public static final int no_results_before_zip=0x7f060009;
-        public static final int no_results_title=0x7f06000b;
-        public static final int submit_button=0x7f06000c;
+        public static final int dismiss_button=0x7f060003;
+        public static final int edit_message=0x7f060004;
+        public static final int instruction=0x7f060005;
+        public static final int invalid_entry=0x7f060006;
+        public static final int invalid_message=0x7f060007;
+        public static final int launch_description=0x7f060008;
+        public static final int menu_about=0x7f060009;
+        public static final int menu_eula=0x7f06000a;
+        public static final int no_results_after_zip=0x7f06000c;
+        public static final int no_results_before_zip=0x7f06000b;
+        public static final int no_results_title=0x7f06000d;
+        public static final int submit_button=0x7f06000e;
     }
     public static final class style {
         /** 

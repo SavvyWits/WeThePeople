@@ -30,6 +30,7 @@
         android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/edit_message"
       	android:textSize="35sp"
       	android:textColor="@color/edit_text"
       	android:background="@drawable/rectangle"

@@ -68,7 +68,7 @@ public class RESTResultFragment extends ListFragment {
 				new String[] { "name", "party", "state", "district", "address", "phone", "link" },
 				new int[] { R.id.name, R.id.party, R.id.state,
 					R.id.district, R.id.address, R.id.phone, R.id.link });
-        
+		
 		setListAdapter(mAdapter);
 		return view;
 	}

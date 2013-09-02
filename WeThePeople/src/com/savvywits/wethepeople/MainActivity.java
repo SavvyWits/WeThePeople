@@ -175,6 +175,14 @@ public class MainActivity extends FragmentActivity
 		}
 	}
 	
+	public void dismissOverlay(View view) {
+		Fragment overlay = mFragmentManager.findFragmentById(R.id.overlay);
+		if (overlay != null) {
+			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+			fragmentTransaction.remove(overlay).commit();
+		}
+	}
+	
 	public boolean validZipCode(String zipCode) {
 		boolean valid = false;
 		if (zipCode.length() == 5) {

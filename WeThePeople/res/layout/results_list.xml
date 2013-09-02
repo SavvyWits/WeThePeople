@@ -3,11 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+    
+    <Button 
+        android:id="@+id/footer_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/overlay_button"
+        android:text="@string/dismiss_button"
+        android:textSize="32sp"
+        android:onClick="dismissOverlay" />
+    
     <ListView
         android:id="@id/android:list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin"
+        android:layout_above="@id/footer_button"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
         android:background="@drawable/overlay_background"
         android:cacheColorHint="@color/cache_color_hint"
         android:scrollbarThumbVertical="@drawable/scroll_thumb" />
@@ -19,5 +36,5 @@
         android:layout_centerInParent="true"
         style="@android:style/Widget.ProgressBar.Large.Inverse"
         android:indeterminate="true" />
-
+    
 </RelativeLayout>
