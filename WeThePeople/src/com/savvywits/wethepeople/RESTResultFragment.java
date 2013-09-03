@@ -58,22 +58,23 @@ public class RESTResultFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		mAdapter = new SimpleAdapter(getActivity(), mReplist, R.layout.results_item,
+				new String[] { "name", "party", "state", "district", "address", "phone", "link" },
+				new int[] { R.id.name, R.id.party, R.id.state,
+					R.id.district, R.id.address, R.id.phone, R.id.link });
 	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {    		
 		
 		View view = inflater.inflate(R.layout.results_list, container, false);
-		mAdapter = new SimpleAdapter(getActivity(), mReplist, R.layout.results_item,
-				new String[] { "name", "party", "state", "district", "address", "phone", "link" },
-				new int[] { R.id.name, R.id.party, R.id.state,
-					R.id.district, R.id.address, R.id.phone, R.id.link });
-		
+		mReplist.clear();
 		setListAdapter(mAdapter);
 		return view;
 	}
 	
 	public static void updateResults(String results) {
+		
 		try {
 			JSONObject jobj = new JSONObject(results);
 			JSONArray jarray = new JSONArray();
@@ -102,6 +103,11 @@ public class RESTResultFragment extends ListFragment {
 			Log.e(TAG, "Error parsing data [" + e.getMessage()+"] " + results);
 		}
 		mAdapter.notifyDataSetChanged();
+	}
+	
+	@Override
+	public void onDetach() {
+		super.onDetach();	
 	}
 	
 	public RESTResultFragment() {}

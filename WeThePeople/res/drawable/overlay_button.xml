@@ -8,10 +8,10 @@
              <gradient
                  android:centerX="0.5"
                  android:centerY="0.5"
-                 android:startColor="#aadbc2c2"
-                 android:endColor="#aa493e3e"
+                 android:startColor="@color/white"
+                 android:endColor="@color/overlay_background"
                  android:type="radial"
-                 android:gradientRadius="100" />
+                 android:gradientRadius="300" />
          </shape>
      </item>
          
@@ -20,7 +20,7 @@
     		<corners
         		android:bottomLeftRadius="5dp"
         		android:bottomRightRadius="5dp" />
-             <solid android:color="@color/main_color" />
+             <solid android:color="@color/transparent" />
           </shape>
      </item>
 </selector>

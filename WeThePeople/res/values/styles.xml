@@ -16,26 +16,33 @@
         <item name="android:textSize">32sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="footer_button">
+        <item name="android:background">@drawable/overlay_button</item>
+        <item name="android:padding">@dimen/padding</item>
+        <item name="android:textColor">@color/results</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="results_name">
         <item name="android:padding">@dimen/padding</item>
-        <item name="android:textColor">@color/results_name</item>
+        <item name="android:textColor">@color/results</item>
         <item name="android:textSize">@dimen/results_name</item>
     </style>
     <style name="results_detail">
         <item name="android:paddingLeft">@dimen/padding</item>
-        <item name="android:textColor">@color/results_details</item>
+        <item name="android:textColor">@color/results</item>
         <item name="android:textSize">@dimen/results_details</item>
     </style>
     <style name="results_address">
         <item name="android:paddingLeft">@dimen/padding</item>
         <item name="android:paddingRight">@dimen/padding</item>
-        <item name="android:textColor">@color/results_details</item>
+        <item name="android:textColor">@color/results</item>
         <item name="android:textSize">@dimen/results_details</item>        
     </style>
     <style name="results_link">
         <item name="android:paddingLeft">@dimen/padding</item>
         <item name="android:paddingRight">@dimen/padding</item>
-        <item name="android:textColorLink">@color/results_details</item>
+        <item name="android:textColorLink">@color/results</item>
         <item name="android:textSize">@dimen/results_details</item>        
     </style>
 

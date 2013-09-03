@@ -4,7 +4,7 @@
     <string name="action_settings"></string>
     <string name="app_name">We The People</string>
     <string name="dialog_ok">OK</string>
-    <string name="dismiss_button">OK</string>
+    <string name="dismiss_button">Dismiss</string>
     <string name="edit_message">Zip code here</string>
     <string name="instruction">Enter a zip code</string>
     <string name="invalid_entry">Uh oh! Something\'s wrong.</string>

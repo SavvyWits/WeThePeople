@@ -12,16 +12,16 @@ public final class R {
     }
     public static final class color {
         public static final int about_text=0x7f040000;
-        public static final int cache_color_hint=0x7f040001;
-        public static final int edit_text=0x7f040003;
-        public static final int end_color=0x7f040002;
-        public static final int launch_text=0x7f040004;
-        public static final int main_color=0x7f040005;
-        public static final int overlay_background=0x7f040006;
-        public static final int results_details=0x7f040007;
-        public static final int results_name=0x7f040008;
-        public static final int stroke_color=0x7f040009;
-        public static final int submit_text=0x7f04000a;
+        public static final int edit_text=0x7f040002;
+        public static final int end_color=0x7f040001;
+        public static final int launch_text=0x7f040003;
+        public static final int main_color=0x7f040004;
+        public static final int overlay_background=0x7f040005;
+        public static final int results=0x7f040006;
+        public static final int stroke_color=0x7f040007;
+        public static final int submit_text=0x7f040008;
+        public static final int transparent=0x7f040009;
+        public static final int white=0x7f04000a;
     }
     public static final class dimen {
         public static final int about_text=0x7f050002;
@@ -103,13 +103,14 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070007;
+        public static final int AppBaseTheme=0x7f070008;
         public static final int Button=0x7f070001;
         public static final int Button_Big=0x7f070002;
         public static final int about_style=0x7f070000;
-        public static final int results_address=0x7f070005;
-        public static final int results_detail=0x7f070004;
-        public static final int results_link=0x7f070006;
-        public static final int results_name=0x7f070003;
+        public static final int footer_button=0x7f070003;
+        public static final int results_address=0x7f070006;
+        public static final int results_detail=0x7f070005;
+        public static final int results_link=0x7f070007;
+        public static final int results_name=0x7f070004;
     }
 }

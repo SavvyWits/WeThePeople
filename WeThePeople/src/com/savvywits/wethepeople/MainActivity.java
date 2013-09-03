@@ -85,6 +85,10 @@ public class MainActivity extends FragmentActivity
 			RESTResultFragment.updateResults(data);
 			break;
 		case ERROR:
+			Fragment resultsFragment = mFragmentManager.findFragmentByTag("results_list");
+			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+			fragmentTransaction.remove(resultsFragment).commit();
+			
 			Fragment errorFragment = mFragmentManager.findFragmentByTag("error_dialog");
 			if (errorFragment == null) {
 				DialogFragment error = ErrorDialogFragment.newInstance(mZipCode);
@@ -106,12 +110,14 @@ public class MainActivity extends FragmentActivity
 		mZipCode = mData.getText().toString();		
 		if (validZipCode(mZipCode)) {
 			Fragment fragment = mFragmentManager.findFragmentByTag("results_list");			
-			if (fragment == null) {
+			if (fragment != null) {
 				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-				RESTResultFragment emptyList = RESTResultFragment.newInstance(null);
-				fragmentTransaction.add(R.id.overlay, emptyList, "results_list");
-				fragmentTransaction.commit();
-				}
+				fragmentTransaction.remove(fragment).commit();
+			}
+			RESTResultFragment emptyList = RESTResultFragment.newInstance(null);
+			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+			fragmentTransaction.add(R.id.overlay, emptyList, "results_list");
+			fragmentTransaction.commit();
 			
 			Intent intent = new Intent(Intent.ACTION_SYNC, null, this, RESTService.class);
 			intent.putExtra("receiver", mReceiver);

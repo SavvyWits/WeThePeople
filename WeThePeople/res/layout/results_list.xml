@@ -2,19 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_margin="@dimen/margin"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/overlay_background" >
     
     <Button 
         android:id="@+id/footer_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin"
-        android:layout_marginRight="@dimen/margin"
-        android:layout_marginBottom="@dimen/margin"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/overlay_button"
         android:text="@string/dismiss_button"
-        android:textSize="32sp"
+        style="@style/footer_button"
         android:onClick="dismissOverlay" />
     
     <ListView
@@ -22,11 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/footer_button"
-        android:layout_marginTop="@dimen/margin"
-        android:layout_marginLeft="@dimen/margin"
-        android:layout_marginRight="@dimen/margin"
-        android:background="@drawable/overlay_background"
-        android:cacheColorHint="@color/cache_color_hint"
+        android:cacheColorHint="@color/transparent"
         android:scrollbarThumbVertical="@drawable/scroll_thumb" />
     
     <ProgressBar
