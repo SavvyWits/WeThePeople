@@ -9,23 +9,34 @@ package com.savvywits.wethepeople;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int edgeeffect_color=0x7f010000;
     }
     public static final class color {
         public static final int about_text=0x7f040000;
         public static final int button_end=0x7f040001;
         public static final int button_start=0x7f040002;
-        public static final int edit_text=0x7f040004;
-        public static final int end_color=0x7f040003;
-        public static final int launch_text=0x7f040005;
-        public static final int main_color=0x7f040006;
-        public static final int overlay_background=0x7f040007;
-        public static final int results=0x7f040008;
-        public static final int scrollbar_end=0x7f040009;
-        public static final int scrollbar_start=0x7f04000a;
-        public static final int stroke_color=0x7f04000b;
-        public static final int submit_text=0x7f04000c;
-        public static final int transparent=0x7f04000d;
-        public static final int white=0x7f04000e;
+        public static final int default_edgeeffect_color=0x7f040010;
+        public static final int edge_effect=0x7f040003;
+        public static final int edit_text=0x7f040005;
+        public static final int end_color=0x7f040004;
+        public static final int launch_text=0x7f040006;
+        public static final int main_color=0x7f040007;
+        public static final int overlay_background=0x7f040008;
+        public static final int results=0x7f040009;
+        public static final int scrollbar_end=0x7f04000a;
+        public static final int scrollbar_start=0x7f04000b;
+        public static final int stroke_color=0x7f04000c;
+        public static final int submit_text=0x7f04000d;
+        public static final int transparent=0x7f04000e;
+        public static final int white=0x7f04000f;
     }
     public static final class dimen {
         public static final int about_text=0x7f050002;
@@ -46,8 +57,10 @@ public final class R {
         public static final int ic_launcher=0x7f020002;
         public static final int overlay_background=0x7f020003;
         public static final int overlay_button=0x7f020004;
-        public static final int rectangle=0x7f020005;
-        public static final int scroll_thumb=0x7f020006;
+        public static final int overscroll_edge=0x7f020005;
+        public static final int overscroll_glow=0x7f020006;
+        public static final int rectangle=0x7f020007;
+        public static final int scroll_thumb=0x7f020008;
     }
     public static final class id {
         public static final int about=0x7f09000f;
@@ -117,4 +130,34 @@ public final class R {
         public static final int results_link=0x7f070007;
         public static final int results_name=0x7f070004;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a EdgeEffectView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #EdgeEffectView_edgeeffect_color com.savvywits.wethepeople:edgeeffect_color}</code></td><td></td></tr>
+           </table>
+           @see #EdgeEffectView_edgeeffect_color
+         */
+        public static final int[] EdgeEffectView = {
+            0x7f010000
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.savvywits.wethepeople.R.attr#edgeeffect_color}
+          attribute's value can be found in the {@link #EdgeEffectView} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.savvywits.wethepeople:edgeeffect_color
+        */
+        public static final int EdgeEffectView_edgeeffect_color = 0;
+    };
 }

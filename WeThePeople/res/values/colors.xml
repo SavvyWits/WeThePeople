@@ -4,6 +4,7 @@
     <color name="about_text">#ddffa475</color>
     <color name="button_end">#dd5a4939</color>
     <color name="button_start">#ddffa475</color>
+    <color name="edge_effect">#ddffa475</color>
     <color name="end_color">#aaffffff</color>
     <color name="edit_text">#aaffffff</color>
     <color name="launch_text">#aa493e3e</color>
