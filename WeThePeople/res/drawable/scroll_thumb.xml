@@ -6,11 +6,8 @@
         android:topRightRadius="5dp"
         android:bottomRightRadius="5dp" />
     <gradient
-        android:centerX="0.3"
-        android:centerColor="@color/end_color"
-        android:endColor="@color/end_color"
-        android:startColor="@color/main_color"
+        android:centerX="0.1"
+        android:endColor="@color/scrollbar_end"
+        android:startColor="@color/scrollbar_start"
         android:type="linear" />
-    <solid
-        android:color="@color/main_color" />
 </shape>

@@ -5,22 +5,16 @@
              <gradient
                  android:centerX="0.5"
                  android:centerY="0.5"
-                 android:startColor="#aadbc2c2"
-                 android:endColor="#aa493e3e"
+                 android:startColor="@color/button_start"
+                 android:endColor="@color/button_end"
                  android:type="radial"
                  android:gradientRadius="100" />
-             <stroke
-                 android:width="2dip"
-                 android:color="@color/stroke_color" />
          </shape>
      </item>
          
      <item>
          <shape android:shape="rectangle">
              <solid android:color="@color/main_color" />
-             <stroke
-                 android:width="2dip"
-                 android:color="@color/stroke_color" />
           </shape>
      </item>
 </selector>

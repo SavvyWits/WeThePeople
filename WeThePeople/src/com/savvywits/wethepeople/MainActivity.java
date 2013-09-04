@@ -87,7 +87,9 @@ public class MainActivity extends FragmentActivity
 		case ERROR:
 			Fragment resultsFragment = mFragmentManager.findFragmentByTag("results_list");
 			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-			fragmentTransaction.remove(resultsFragment).commit();
+			fragmentTransaction.remove(resultsFragment);
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            fragmentTransaction.commit();
 			
 			Fragment errorFragment = mFragmentManager.findFragmentByTag("error_dialog");
 			if (errorFragment == null) {
@@ -112,11 +114,14 @@ public class MainActivity extends FragmentActivity
 			Fragment fragment = mFragmentManager.findFragmentByTag("results_list");			
 			if (fragment != null) {
 				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-				fragmentTransaction.remove(fragment).commit();
+				fragmentTransaction.remove(fragment);
+                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                fragmentTransaction.commit();
 			}
 			RESTResultFragment emptyList = RESTResultFragment.newInstance(null);
 			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 			fragmentTransaction.add(R.id.overlay, emptyList, "results_list");
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 			fragmentTransaction.commit();
 			
 			Intent intent = new Intent(Intent.ACTION_SYNC, null, this, RESTService.class);
@@ -145,6 +150,13 @@ public class MainActivity extends FragmentActivity
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
 	        case R.id.about:
+	        	Fragment fragment = mFragmentManager.findFragmentById(R.id.overlay);
+	        	if (fragment != null) {
+	        		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+	        		fragmentTransaction.remove(fragment);
+                    fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    fragmentTransaction.commit();
+	        	}
 	        	Fragment aboutFragment = mFragmentManager.findFragmentByTag("about");
 	        	if (aboutFragment == null) {
 	        		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
@@ -175,6 +187,7 @@ public class MainActivity extends FragmentActivity
 		if (overlay != null) {
 			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 			fragmentTransaction.remove(overlay);
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 			fragmentTransaction.commit();
 		} else {
 			super.onBackPressed();
@@ -185,7 +198,9 @@ public class MainActivity extends FragmentActivity
 		Fragment overlay = mFragmentManager.findFragmentById(R.id.overlay);
 		if (overlay != null) {
 			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-			fragmentTransaction.remove(overlay).commit();
+			fragmentTransaction.remove(overlay);
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            fragmentTransaction.commit();
 		}
 	}
 	

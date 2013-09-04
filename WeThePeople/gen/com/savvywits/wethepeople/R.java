@@ -12,16 +12,20 @@ public final class R {
     }
     public static final class color {
         public static final int about_text=0x7f040000;
-        public static final int edit_text=0x7f040002;
-        public static final int end_color=0x7f040001;
-        public static final int launch_text=0x7f040003;
-        public static final int main_color=0x7f040004;
-        public static final int overlay_background=0x7f040005;
-        public static final int results=0x7f040006;
-        public static final int stroke_color=0x7f040007;
-        public static final int submit_text=0x7f040008;
-        public static final int transparent=0x7f040009;
-        public static final int white=0x7f04000a;
+        public static final int button_end=0x7f040001;
+        public static final int button_start=0x7f040002;
+        public static final int edit_text=0x7f040004;
+        public static final int end_color=0x7f040003;
+        public static final int launch_text=0x7f040005;
+        public static final int main_color=0x7f040006;
+        public static final int overlay_background=0x7f040007;
+        public static final int results=0x7f040008;
+        public static final int scrollbar_end=0x7f040009;
+        public static final int scrollbar_start=0x7f04000a;
+        public static final int stroke_color=0x7f04000b;
+        public static final int submit_text=0x7f04000c;
+        public static final int transparent=0x7f04000d;
+        public static final int white=0x7f04000e;
     }
     public static final class dimen {
         public static final int about_text=0x7f050002;
@@ -47,22 +51,22 @@ public final class R {
     }
     public static final class id {
         public static final int about=0x7f09000f;
-        public static final int aboutpage=0x7f090000;
-        public static final int address=0x7f09000a;
-        public static final int district=0x7f090009;
+        public static final int aboutpage=0x7f090001;
+        public static final int address=0x7f09000b;
+        public static final int district=0x7f09000a;
         public static final int element_background_shape=0x7f09000e;
         public static final int eula=0x7f090010;
-        public static final int footer_button=0x7f09000d;
-        public static final int instruction=0x7f090002;
-        public static final int link=0x7f09000c;
-        public static final int mainview=0x7f090001;
-        public static final int name=0x7f090006;
-        public static final int overlay=0x7f090005;
-        public static final int party=0x7f090007;
-        public static final int phone=0x7f09000b;
-        public static final int state=0x7f090008;
-        public static final int submit=0x7f090004;
-        public static final int zipcode=0x7f090003;
+        public static final int footer_button=0x7f090000;
+        public static final int instruction=0x7f090003;
+        public static final int link=0x7f09000d;
+        public static final int mainview=0x7f090002;
+        public static final int name=0x7f090007;
+        public static final int overlay=0x7f090006;
+        public static final int party=0x7f090008;
+        public static final int phone=0x7f09000c;
+        public static final int state=0x7f090009;
+        public static final int submit=0x7f090005;
+        public static final int zipcode=0x7f090004;
     }
     public static final class layout {
         public static final int about_layout=0x7f030000;

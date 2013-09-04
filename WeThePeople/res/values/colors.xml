@@ -2,12 +2,16 @@
 <resources>
     
     <color name="about_text">#ddffa475</color>
+    <color name="button_end">#dd5a4939</color>
+    <color name="button_start">#ddffa475</color>
     <color name="end_color">#aaffffff</color>
     <color name="edit_text">#aaffffff</color>
     <color name="launch_text">#aa493e3e</color>
     <color name="main_color">#aa5a4939</color>
     <color name="overlay_background">#dd5a4939</color>
     <color name="results">#ddffa475</color>
+    <color name="scrollbar_end">#aa5a4939</color>
+    <color name="scrollbar_start">#ddffa475</color>
     <color name="stroke_color">#aaffffff</color>
     <color name="submit_text">#aaffffff</color>
     <color name="transparent">#00000000</color>
